@@ -3,7 +3,7 @@ SIMILARITY_MEASURE = "cosine" # "cosine" or "dot"
 KEEP_ALIVE = "5m" # How long to keep Ollama models loaded into memory. (Instead of using -1 use "-1m")
 
 [MODELS.OPENAI]
-API_KEY = "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"
+API_KEY = "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"
 
 [MODELS.GROQ]
 API_KEY = ""
