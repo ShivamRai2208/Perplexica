@@ -12,7 +12,5 @@ export const getCustomOpenaiModelName = () => '';
 export const getLMStudioApiEndpoint = () => '';
 
 
-export const getCustomOpenaiApiKey = () => '';
-export const getCustomOpenaiApiUrl = () => '';
-export const getCustomOpenaiModelName = () => '';
+
 
