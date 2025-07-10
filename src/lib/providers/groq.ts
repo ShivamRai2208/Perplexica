@@ -1,4 +1,5 @@
 import { ChatOpenAI } from '@langchain/openai';
+import { BaseChatModel } from '@langchain/core/language_models/chat_models';
 import { getGroqApiKey } from '../config';
 import { ChatModel } from '.';
 
@@ -7,9 +8,7 @@ export const PROVIDER_INFO = {
   displayName: 'Groq',
 };
 
-import { BaseChatModel } from '@langchain/core/language_models/chat_models';
-
-export const loadGroqChatModels = async () => {
+export const loadGroqChatModels = async (): Promise<Record<string, ChatModel>> => {
   const groqApiKey = getGroqApiKey();
   if (!groqApiKey) return {};
 
@@ -17,15 +16,21 @@ export const loadGroqChatModels = async () => {
     const res = await fetch('https://api.groq.com/openai/v1/models', {
       method: 'GET',
       headers: {
-        Authorization: `bearer ${groqApiKey}`,
+        Authorization: `Bearer ${groqApiKey}`,
         'Content-Type': 'application/json',
       },
     });
 
-    const groqChatModels = (await res.json()).data;
+    const data = await res.json();
+
+    if (!data?.data || !Array.isArray(data.data)) {
+      console.error('Invalid response from Groq API:', data);
+      return {};
+    }
+
     const chatModels: Record<string, ChatModel> = {};
 
-    groqChatModels.forEach((model: any) => {
+    for (const model of data.data) {
       chatModels[model.id] = {
         displayName: model.id,
         model: new ChatOpenAI({
@@ -37,7 +42,7 @@ export const loadGroqChatModels = async () => {
           },
         }) as unknown as BaseChatModel,
       };
-    });
+    }
 
     return chatModels;
   } catch (err) {
