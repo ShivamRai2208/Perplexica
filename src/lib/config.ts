@@ -1,10 +1,12 @@
 // src/lib/config.ts
 
+
+export const getMistralApiKey = () => process.env.MISTRAL_API_KEY || '';
 export const getOpenaiApiKey = () => '';
 export const getCustomOpenaiApiKey = () => '';
 export const getCustomOpenaiApiUrl = () => '';
 export const getCustomOpenaiModelName = () => '';
-export const getGroqApiKey = () => process.env.Groq_API_KEY || '';
+export const getGroqApiKey = () => '';
 export const getAnthropicApiKey = () => '';
 export const getGeminiApiKey = () => '';
 export const getSearxngApiEndpoint = () => process.env.SEARXNG_API_URL || '';
