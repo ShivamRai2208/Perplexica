@@ -50,30 +50,27 @@ const DiscoverPage = () => {
 
       {/* 🔹 Hero Section with Image */}
       <section className="pt-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Left: Text */}
-          <div className="flex-1">
-            <div className="flex items-center space-x-3">
-              <Search className="w-6 h-6 text-primary" />
-              <h1 className="text-4xl font-bold">Discover</h1>
-            </div>
-            <p className="mt-4 text-lg text-muted max-w-xl">
-              Explore our AI-powered insights, custom solutions, and industry expertise.
-            </p>
-          </div>
-
-          {/* Right: Image */}
-          <div className="w-full lg:w-[320px]">
-            <Image
-              src="/image_brainplex.png" // 🔁 Replace with your actual image in /public
-              alt="Discover illustration"
-              width={320}
-              height={220}
-              className="rounded-lg object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <div className="flex items-center space-x-3">
+        {/* Left: Small image */}
+        <Image
+          src="/image_brainplex.png" // Ensure this image is inside /public
+          alt="BrainPlex logo"
+          width={24}
+          height={24}
+          className="object-contain rounded-sm"
+        />
+    
+        {/* Center: Search icon */}
+        <Search className="w-6 h-6 text-primary" />
+    
+        {/* Right: Heading */}
+        <h1 className="text-4xl font-bold">BrainPlex AI</h1>
+      </div>
+    
+      <p className="mt-4 text-lg text-muted max-w-xl">
+        Explore our AI-powered insights, custom solutions, and industry expertise.
+      </p>
+    </section>
 
       {/* 🔹 AI Services Section */}
       <section>
