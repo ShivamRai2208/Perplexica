@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
-// Define the blog item structure
 interface Discover {
   title: string;
   content: string;
@@ -18,7 +17,6 @@ const DiscoverPage = () => {
   const [discover, setDiscover] = useState<Discover[] | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch data from /api/discover
   useEffect(() => {
     async function fetchData() {
       try {
@@ -50,15 +48,31 @@ const DiscoverPage = () => {
   return (
     <div className="pb-16 space-y-12">
 
-      {/* 🔹 Hero Section */}
+      {/* 🔹 Hero Section with Image */}
       <section className="pt-8">
-        <div className="flex items-center space-x-3">
-          <Search className="w-6 h-6 text-primary" />
-          <h1 className="text-4xl font-bold">Discover</h1>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Left: Text */}
+          <div className="flex-1">
+            <div className="flex items-center space-x-3">
+              <Search className="w-6 h-6 text-primary" />
+              <h1 className="text-4xl font-bold">Discover</h1>
+            </div>
+            <p className="mt-4 text-lg text-muted max-w-xl">
+              Explore our AI-powered insights, custom solutions, and industry expertise.
+            </p>
+          </div>
+
+          {/* Right: Image */}
+          <div className="w-full lg:w-[320px]">
+            <Image
+              src="/discover-banner.png" // 🔁 Replace with your actual image in /public
+              alt="Discover illustration"
+              width={320}
+              height={220}
+              className="rounded-lg object-cover"
+            />
+          </div>
         </div>
-        <p className="mt-4 text-lg text-muted">
-          Explore our AI-powered insights, custom solutions, and industry expertise.
-        </p>
       </section>
 
       {/* 🔹 AI Services Section */}
@@ -159,7 +173,7 @@ const DiscoverPage = () => {
           href="/contact"
           className="inline-block mt-6 px-8 py-3 bg-accent text-white font-semibold rounded-md hover:bg-accent-dark transition"
         >
-          Contact Us
+          Brain Plex AI
         </Link>
       </section>
     </div>
