@@ -65,7 +65,7 @@ const DiscoverPage = () => {
           {/* Right: Image */}
           <div className="w-full lg:w-[320px]">
             <Image
-              src="/discover-banner.png" // 🔁 Replace with your actual image in /public
+              src="/image_brainplex.png" // 🔁 Replace with your actual image in /public
               alt="Discover illustration"
               width={320}
               height={220}
