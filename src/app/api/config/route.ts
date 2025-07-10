@@ -10,8 +10,8 @@ import {
   getDeepseekApiKey,
   getAimlApiKey,
   getLMStudioApiEndpoint,
-  updateConfig,
 } from '@/lib/config';
+
 import {
   getAvailableChatModelProviders,
   getAvailableEmbeddingModelProviders,
@@ -73,52 +73,4 @@ export const GET = async (req: Request) => {
   }
 };
 
-export const POST = async (req: Request) => {
-  try {
-    const config = await req.json();
 
-    const updatedConfig = {
-      MODELS: {
-        OPENAI: {
-          API_KEY: config.openaiApiKey,
-        },
-        GROQ: {
-          API_KEY: config.groqApiKey,
-        },
-        ANTHROPIC: {
-          API_KEY: config.anthropicApiKey,
-        },
-        GEMINI: {
-          API_KEY: config.geminiApiKey,
-        },
-        OLLAMA: {
-          API_URL: config.ollamaApiUrl,
-        },
-        DEEPSEEK: {
-          API_KEY: config.deepseekApiKey,
-        },
-        AIMLAPI: {
-          API_KEY: config.aimlApiKey,
-        },
-        LM_STUDIO: {
-          API_URL: config.lmStudioApiUrl,
-        },
-        CUSTOM_OPENAI: {
-          API_URL: config.customOpenaiApiUrl,
-          API_KEY: config.customOpenaiApiKey,
-          MODEL_NAME: config.customOpenaiModelName,
-        },
-      },
-    };
-
-    updateConfig(updatedConfig);
-
-    return Response.json({ message: 'Config updated' }, { status: 200 });
-  } catch (err) {
-    console.error('An error occurred while updating config:', err);
-    return Response.json(
-      { message: 'An error occurred while updating config' },
-      { status: 500 },
-    );
-  }
-};
