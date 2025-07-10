@@ -4,12 +4,12 @@ import {
   loadOpenAIChatModels,
   loadOpenAIEmbeddingModels,
   PROVIDER_INFO as OpenAIInfo,
-  PROVIDER_INFO,
 } from './openai';
 import {
   getCustomOpenaiApiKey,
   getCustomOpenaiApiUrl,
   getCustomOpenaiModelName,
+  getMistralApiKey,
 } from '../config';
 import { ChatOpenAI } from '@langchain/openai';
 import {
@@ -17,7 +17,10 @@ import {
   loadOllamaEmbeddingModels,
   PROVIDER_INFO as OllamaInfo,
 } from './ollama';
-import { loadGroqChatModels, PROVIDER_INFO as GroqInfo } from './groq';
+import {
+  loadGroqChatModels,
+  PROVIDER_INFO as GroqInfo,
+} from './groq';
 import {
   loadAnthropicChatModels,
   PROVIDER_INFO as AnthropicInfo,
@@ -46,6 +49,11 @@ import {
   PROVIDER_INFO as LMStudioInfo,
 } from './lmstudio';
 
+import {
+  loadMistralChatModels,
+  PROVIDER_INFO as MistralInfo,
+} from './mistral'; // ✅ NEW: Import Mistral
+
 export const PROVIDER_METADATA = {
   openai: OpenAIInfo,
   ollama: OllamaInfo,
@@ -56,6 +64,7 @@ export const PROVIDER_METADATA = {
   deepseek: DeepseekInfo,
   aimlapi: AimlApiInfo,
   lmstudio: LMStudioInfo,
+  mistral: MistralInfo, // ✅ NEW
   custom_openai: {
     key: 'custom_openai',
     displayName: 'Custom OpenAI',
@@ -84,6 +93,7 @@ export const chatModelProviders: Record<
   deepseek: loadDeepseekChatModels,
   aimlapi: loadAimlApiChatModels,
   lmstudio: loadLMStudioChatModels,
+  mistral: loadMistralChatModels, // ✅ NEW
 };
 
 export const embeddingModelProviders: Record<
